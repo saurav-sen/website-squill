@@ -22,10 +22,10 @@
 	<script src="js/jquery.min-3.1.1.js"></script>
 	<script src="js/bootstrap.min-3.3.7.js"></script>
 	
-	<script src="jquery.hoverGrid.js"></script>
+	<script src="jquery/jquery.hoverGrid.js"></script>
 	
-	<script type="javascript">
-		$( document ).ready(function() {
+	<script type="text/javascript">
+		/*$( document ).ready(function() {
 			$('#contact_submit').click(function() {
 				var name = $('#contact_name').val();
 				var email = $('#contact_email').val();
@@ -47,22 +47,28 @@
 					}
 				});
 			});
-		});
-		$( document ).ready(function() {
+		});*/
+		$(document).ready(function() {
+			alert("Hi")
 			$.ajax({
 				type: 'GET',
-				url: "RSS/public/visions/top",
+				url: "http://www.squill.co.in/RSS/public/visions/top",
 				success: function(data) {
 					var response = $.parseJSON(data);
-					console.log(response);
+					//console.log(response);
 					$.each(response, function(i, vision) {
-						var $div = $('<div>').addClass('item')
-							.append($('img').attr('width', 400).attr('height', 400).attr('src', vision.wallpaperUrl))
-							.append($('div').addClass('caption').attr('style', 'display: none;')
-								.append($('h2').text(vision.title))
-								.append($('p').text("by - " + vision.ownerName))));
-						$('#layout').append($div);					
+						var $div = $('<div>').addClass('item');
+						var $img = $('<img>').attr('width', 400).attr('height', 400).attr('src', vision.wallpaperUrl);
+						var $div1 = $('<div>').addClass('caption').attr('style', 'display: none;');
+						var $h2 = $('<h2>').text(vision.title);
+						var $p = $('<p>').text("by - " + vision.ownerName);
+						$div1.append($h2);
+						$div1.append($p);
+						$div.append($img);
+						$div.append($div1);
+						$('#layout').append($div);				
 					});
+					//console.log($('#layout').html())
 					$('#layout').hoverGrid();
 				},
 				error: function() {
