@@ -49,12 +49,12 @@
 			});
 		});*/
 		$(document).ready(function() {
-			alert("Hi")
+			//alert("Hi")
 			$.ajax({
 				type: 'GET',
 				url: "http://www.squill.co.in/RSS/public/visions/top",
 				success: function(data) {
-					var response = $.parseJSON(data);
+					var response = data.topics;//$.parseJSON(data);
 					//console.log(response);
 					$.each(response, function(i, vision) {
 						var $div = $('<div>').addClass('item');
