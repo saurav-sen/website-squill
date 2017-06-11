@@ -52,7 +52,7 @@
 			//alert("Hi")
 			$.ajax({
 				type: 'GET',
-				url: "http://www.squill.co.in/RSS/public/visions/top",
+				url: "RSS/public/visions/top",
 				success: function(data) {
 					var response = data.topics;//$.parseJSON(data);
 					//console.log(response);
@@ -60,7 +60,7 @@
 						var $div = $('<div>').addClass('item');
 						var $img = $('<img>').attr('width', 200).attr('height', 200).attr('src', vision.wallpaperUrl).attr('style', "max-width: 100%; max-height: 100%");
 						var $div1 = $('<div>').addClass('caption').attr('style', 'display: none;');
-						var $h2 = $('<h2>').text(vision.title);
+						var $h2 = $('<h2>').text(vision.name);
 						var $p = $('<p>').text("by - " + vision.ownerName);
 						$div1.append($h2);
 						$div1.append($p);
